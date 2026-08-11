@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useInView';
 import { projects } from '../data/portfolio-data';
-import { Github, ExternalLink, CheckCircle2, Code2 } from 'lucide-react';
+import { Github, ExternalLink, CheckCircle2, Code2, Briefcase, Rocket, User } from 'lucide-react';
 import { Button } from './ui/button';
 
 export function Projects() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const allTechs = Array.from(new Set(projects.flatMap(p => p.techStack)));
+  const categories = ['All Projects', 'Client Work', 'My Venture', 'Personal Project'];
 
-  const filteredProjects = selectedTech
-    ? projects.filter(p => p.techStack.includes(selectedTech))
+  const filteredProjects = selectedCategory && selectedCategory !== 'All Projects'
+    ? projects.filter(p => p.category === selectedCategory)
     : projects;
 
   return (
@@ -30,37 +30,26 @@ export function Projects() {
               // Portfolio Work
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100">
-              Featured Software Engineering Projects
+              Featured Software & Commercial Work
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto font-normal">
-              Production-ready MERN stack applications built with modular backend API logic and clean state management.
+              Commercial client applications, software ventures, and independent full-stack web projects.
             </p>
           </div>
 
-          {/* Tech Filter Pills */}
+          {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
-            <button
-              onClick={() => setSelectedTech(null)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                selectedTech === null
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'goated-card text-slate-700 dark:text-slate-300 hover:text-indigo-600'
-              }`}
-            >
-              All Projects ({projects.length})
-            </button>
-
-            {allTechs.map(tech => (
+            {categories.map(cat => (
               <button
-                key={tech}
-                onClick={() => setSelectedTech(tech === selectedTech ? null : tech)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all ${
-                  selectedTech === tech
+                key={cat}
+                onClick={() => setSelectedCategory(cat === 'All Projects' ? null : cat)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  (selectedCategory === null && cat === 'All Projects') || selectedCategory === cat
                     ? 'bg-indigo-600 text-white shadow-xs'
                     : 'goated-card text-slate-700 dark:text-slate-300 hover:text-indigo-600'
                 }`}
               >
-                {tech}
+                {cat} {cat === 'All Projects' ? `(${projects.length})` : ''}
               </button>
             ))}
           </div>
@@ -68,7 +57,7 @@ export function Projects() {
           {/* Bento Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {filteredProjects.map((project, index) => {
-              const isFeatured = index === 0;
+              const isFeatured = index === 0 && (!selectedCategory || selectedCategory === 'All Projects' || selectedCategory === 'Client Work');
               return (
                 <motion.div
                   key={project.id}
@@ -94,14 +83,18 @@ export function Projects() {
                             <Code2 className="w-12 h-12 text-indigo-500" />
                           </div>
                         )}
-                        <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider">
-                          Featured Architecture
+                        <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <Briefcase className="w-3 h-3" />
+                          {project.category} {project.builtThrough ? `• ${project.builtThrough}` : ''}
                         </div>
                       </div>
 
                       {/* Right Content */}
                       <div className="lg:col-span-6 space-y-4">
                         <div>
+                          <div className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">
+                            Featured Commercial SaaS
+                          </div>
                           <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                             {project.name}
                           </h3>
@@ -131,15 +124,17 @@ export function Projects() {
 
                         {/* Actions */}
                         <div className="flex items-center gap-3 pt-2">
-                          <Button asChild size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl">
-                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                              <Github className="w-4 h-4 mr-2" /> View Source Code
-                            </a>
-                          </Button>
                           {project.liveUrl && (
-                            <Button asChild variant="outline" size="sm" className="rounded-xl border-slate-300 dark:border-slate-700 font-bold">
+                            <Button asChild size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl">
                               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="w-4 h-4 mr-2" /> Live Application
+                                <ExternalLink className="w-4 h-4 mr-2" /> Visit Live Website
+                              </a>
+                            </Button>
+                          )}
+                          {project.githubUrl && (
+                            <Button asChild variant="outline" size="sm" className="rounded-xl border-slate-300 dark:border-slate-700 font-bold">
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                                <Github className="w-4 h-4 mr-2" /> Source Code
                               </a>
                             </Button>
                           )}
@@ -156,13 +151,20 @@ export function Projects() {
                             alt={project.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
+                          {project.category && (
+                            <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-slate-900/90 text-slate-200 text-[10px] font-mono font-semibold border border-slate-700">
+                              {project.category} {project.builtThrough ? `• ${project.builtThrough}` : ''}
+                            </div>
+                          )}
                         </div>
                       )}
 
                       <div>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                          {project.name}
-                        </h3>
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            {project.name}
+                          </h3>
+                        </div>
                         <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed font-normal">
                           {project.description}
                         </p>
@@ -186,22 +188,24 @@ export function Projects() {
                       </div>
 
                       <div className="flex items-center gap-4 pt-3 border-t border-slate-200 dark:border-slate-800">
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
-                        >
-                          <Github className="w-4 h-4 mr-1.5" /> Source Code
-                        </a>
                         {project.liveUrl && (
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="flex items-center text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-1.5" /> Visit Website
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600 transition-colors"
                           >
-                            <ExternalLink className="w-4 h-4 mr-1.5" /> Live Demo
+                            <Github className="w-4 h-4 mr-1.5" /> Source Code
                           </a>
                         )}
                       </div>

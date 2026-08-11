@@ -30,10 +30,10 @@ export function Skills() {
               // Technical Stack
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100">
-              Skills & Expertise Matrix
+              Skills & Technology Matrix
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto font-normal">
-              Production-tested tools and frameworks used across frontend, backend, and database architecture.
+              Tested tools and frameworks used across frontend, backend, and database architecture.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export function Skills() {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className={`p-2 rounded-xl ${isCore ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400'}`}>
-                          {categoryIcons[category]}
+                          {categoryIcons[category] || <Code2 className="h-5 w-5" />}
                         </div>
                         <h3 className={`font-bold text-base ${isCore ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>
                           {category}
@@ -101,7 +101,7 @@ export function Skills() {
                 Core Masteries & Active Learning
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                Continuously deepening knowledge in Data Structures & Algorithms, system design fundamentals, and enterprise backend patterns.
+                Deepening technical knowledge in Data Structures & Algorithms, system design fundamentals, and enterprise backend engineering patterns.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-2 pt-1">

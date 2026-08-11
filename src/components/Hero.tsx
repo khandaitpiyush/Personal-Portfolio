@@ -17,7 +17,7 @@ export function Hero({ onViewProjects }: HeroProps) {
     }
   };
 
-  const techBadges = ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'TypeScript'];
+  const techBadges = ['React', 'Node.js', 'Express', 'MongoDB', 'TypeScript'];
 
   return (
     <section id="home" className="min-h-[82vh] flex items-center justify-center pt-36 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8">
@@ -31,20 +31,20 @@ export function Hero({ onViewProjects }: HeroProps) {
           {/* Status Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Open to Summer '25 Internships & Full-Time Roles</span>
+            <span>{personalInfo.statusText}</span>
           </div>
 
-          {/* Senior Headline */}
+          {/* Headline */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
-            Full Stack Software Engineer & MERN Specialist
+            I build software that solves real problems.
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-            Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">{personalInfo.name}</strong>. Second-Year IT Student at <span className="text-slate-900 dark:text-white font-medium">{personalInfo.college}</span>. I build scalable backend services, REST APIs, and modern frontend interfaces.
+            Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">{personalInfo.name}</strong>. Second-Year IT Student at <span className="text-slate-900 dark:text-white font-medium">{personalInfo.college}</span>. I build full-stack web applications, SaaS products, and practical software systems.
           </p>
 
-          {/* Clean Tech Pills */}
+          {/* Tech Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
             {techBadges.map((tech) => (
               <span
@@ -56,11 +56,11 @@ export function Hero({ onViewProjects }: HeroProps) {
             ))}
           </div>
 
-          {/* High-Impact Action CTAs */}
+          {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
             <button
               onClick={onViewProjects}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold text-sm shadow-sm transition-all group flex items-center justify-center"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-500/20 transition-all group flex items-center justify-center"
             >
               View Featured Projects
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -80,7 +80,7 @@ export function Hero({ onViewProjects }: HeroProps) {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               aria-label="GitHub"
               title="GitHub Profile"
             >
@@ -90,7 +90,7 @@ export function Hero({ onViewProjects }: HeroProps) {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               aria-label="LinkedIn"
               title="LinkedIn Profile"
             >
@@ -98,7 +98,7 @@ export function Hero({ onViewProjects }: HeroProps) {
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               aria-label="Email"
               title="Send Email"
             >

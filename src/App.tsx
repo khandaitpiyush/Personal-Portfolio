@@ -12,9 +12,15 @@ import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
 import { DottedBackground } from './components/ui/DottedBackground';
+import { RecruiterPitchModal } from './components/RecruiterPitchModal';
+import { TerminalModal } from './components/TerminalModal';
+import { CommandPalette } from './components/CommandPalette';
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+  const [isPitchOpen, setIsPitchOpen] = useState(false);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -44,27 +50,23 @@ export default function App() {
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
-      const offset = 80;
+      const offset = 90;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 relative font-sans selection:bg-indigo-600 selection:text-white transition-colors duration-200">
-      {/* GOATED Interactive Dotted Grid Canvas */}
-      <DottedBackground />
-
+    <div className="min-h-screen relative font-sans transition-colors duration-200">
       <ScrollProgress />
+      <DottedBackground />
       
       <Navbar
         isDark={isDark}
         toggleTheme={toggleTheme}
+        onOpenPitch={() => setIsPitchOpen(true)}
+        onOpenTerminal={() => setIsTerminalOpen(true)}
       />
       
       <main className="relative z-10">
@@ -80,6 +82,16 @@ export default function App() {
       <Footer />
       <Toaster position="top-right" richColors />
       <ScrollToTop />
+
+      {/* Modals & Command Palette */}
+      <RecruiterPitchModal isOpen={isPitchOpen} onClose={() => setIsPitchOpen(false)} />
+      <TerminalModal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
+      <CommandPalette
+        isOpen={isCommandOpen}
+        onClose={() => setIsCommandOpen(false)}
+        onOpenPitch={() => setIsPitchOpen(true)}
+        onOpenTerminal={() => setIsTerminalOpen(true)}
+      />
     </div>
   );
 }

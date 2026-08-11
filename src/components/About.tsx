@@ -7,10 +7,10 @@ export function About() {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   const keyHighlights = [
-    'MERN Stack (MongoDB, Express.js, React, Node.js) & TypeScript',
-    'RESTful API Architecture, JWT Authentication, & Security Best Practices',
-    '2nd Year IT Undergraduate at Don Bosco Institute of Technology, Mumbai',
-    'Open for Summer 2025 Internships & Software Engineering Roles'
+    'Information Technology Undergraduate at Don Bosco Institute of Technology, Mumbai',
+    'Founder & Lead Developer at NexGo Tech (building commercial client applications)',
+    'Certified MongoDB Developer & Smart India Hackathon Participant',
+    'Focus on full-stack web applications, backend services, and practical software products'
   ];
 
   return (

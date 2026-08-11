@@ -1,14 +1,16 @@
-// Type definitions for the portfolio
+export type ProjectCategory = 'Client Work' | 'My Venture' | 'Personal Project';
 
 export interface Project {
   id: string;
   name: string;
+  category?: ProjectCategory;
   description: string;
   techStack: string[];
   features: string[];
-  githubUrl: string;
+  githubUrl?: string;
   liveUrl?: string;
   image?: string;
+  builtThrough?: string;
 }
 
 export interface Skill {
@@ -20,7 +22,7 @@ export interface Experience {
   id: string;
   title: string;
   organization: string;
-  type: 'internship' | 'workshop' | 'hackathon' | 'certification' | 'freelance';
+  type: 'internship' | 'workshop' | 'hackathon' | 'certification' | 'venture';
   duration: string;
   description: string;
   skills?: string[];
@@ -44,4 +46,5 @@ export interface PersonalInfo {
   bio: string;
   openToWork: boolean;
   statusText: string;
+  resumeUrl?: string;
 }

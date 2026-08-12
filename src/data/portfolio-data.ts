@@ -3,7 +3,7 @@ import { Project, Experience, PersonalInfo } from '../types';
 export const personalInfo: PersonalInfo = {
   name: 'Piyush Prashant Khandait',
   title: 'Software Engineer / Full-Stack Developer',
-  subtitle: 'Second-Year Information Technology Student',
+  subtitle: 'Third-Year Information Technology Student',
   college: 'Don Bosco Institute of Technology, Mumbai',
   location: 'Mumbai, India',
   email: 'khandaitpiyush@gmail.com',

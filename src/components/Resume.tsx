@@ -17,7 +17,7 @@ export function Resume() {
   };
 
   const resumeHighlights = [
-    'Second-Year Information Technology Student at DBIT Mumbai',
+    'Third-Year Information Technology Student at DBIT Mumbai',
     'Founder & Lead Developer at NexGo Tech (Fitcamp, Cacky Cake)',
     'Certified MongoDB Developer & SIH Hackathon Participant',
     'Full-stack MERN stack application and API architecture experience'

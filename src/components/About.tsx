@@ -1,101 +1,202 @@
 import { motion } from 'motion/react';
 import { useInView } from '../hooks/useInView';
-import { GraduationCap, MapPin, Code2, Brain, CheckCircle2, Terminal } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Code2,
+  GraduationCap,
+  MapPin,
+  Terminal,
+} from 'lucide-react';
 import { personalInfo } from '../data/portfolio-data';
 
 export function About() {
-  const { ref, isInView } = useInView({ threshold: 0.1 });
-
-  const keyHighlights = [
-    'Information Technology Undergraduate at Don Bosco Institute of Technology, Mumbai',
-    'Founder & Lead Developer at NexGo Tech (building commercial client applications)',
-    'Certified MongoDB Developer & Smart India Hackathon Participant',
-    'Focus on full-stack web applications, backend services, and practical software products'
-  ];
+  const { ref, isInView } = useInView({ threshold: 0.12 });
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="max-w-5xl mx-auto" ref={ref}>
+    <section
+      id="about"
+      className="relative px-4 py-24 sm:px-6 lg:px-8"
+    >
+      <div ref={ref} className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="space-y-10"
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {/* Section Header */}
-          <div className="space-y-2 text-left sm:text-center">
-            <span className="text-xs font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-bold">
-              // About Me
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100">
-              Engineering Background & Focus
-            </h2>
-          </div>
+          {/* Main content grid */}
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-stretch">
+            {/* Left column */}
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+              <div className="space-y-6 sm:space-y-7">
+                {/* Section heading */}
+                <div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="h-px w-8 bg-indigo-500" />
+                    <span className="text-xs font-mono font-semibold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-400">
+                      About
+                    </span>
+                  </div>
 
-          <div className="grid md:grid-cols-12 gap-8 items-start">
-            {/* Left: Quick Profile Card */}
-            <div className="md:col-span-4">
-              <div className="goated-card p-6 space-y-5">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-                    <Terminal className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white">{personalInfo.name}</h3>
-                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{personalInfo.title}</p>
-                  </div>
+                  <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl mb-8">
+                    Building things,
+                    <br />
+                    learning constantly.
+                  </h2>
                 </div>
 
-                <div className="space-y-3 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
-                  <div className="flex items-start gap-2.5">
-                    <GraduationCap className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-semibold text-slate-900 dark:text-white block">Don Bosco Institute of Technology</span>
-                      <span>B.Tech in Information Technology (2nd Year)</span>
-                    </div>
-                  </div>
+                <p className="text-lg leading-8 text-slate-700 dark:text-slate-300 sm:text-xl">
+                  I'm{' '}
+                  <span className="font-semibold text-slate-950 dark:text-white">
+                    {personalInfo.name}
+                  </span>
+                  , a third-year Information Technology student at Don Bosco
+                  Institute of Technology, Mumbai.
+                </p>
 
-                  <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-semibold text-slate-900 dark:text-white block">Location</span>
-                      <span>{personalInfo.location}</span>
-                    </div>
-                  </div>
+                <p className="text-base leading-8 text-slate-500 dark:text-slate-400">
+                  I enjoy turning ideas into software that people can actually
+                  use. Most of my work revolves around full-stack web
+                  applications, backend systems, SaaS products, and figuring
+                  out how all the pieces fit together.
+                </p>
 
-                  <div className="flex items-start gap-2.5">
-                    <Code2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-semibold text-slate-900 dark:text-white block">Primary Stack</span>
-                      <span>MongoDB, Express, React, Node, TypeScript</span>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-base leading-8 text-slate-500 dark:text-slate-400">
+                  Outside the classroom, I've been building{' '}
+                  <span className="font-medium text-slate-700 dark:text-slate-200">
+                    NexGo Tech
+                  </span>{' '}
+                  and working on real client projects like Fitcamp and Cacky Cake. That experience has
+                  taught me much more than just writing code — from
+                  understanding requirements to shipping something that needs
+                  to work in the real world.
+                </p>
+              </div>
+
+              {/* Bottom Link Aligned with Right Column Base */}
+              <div className="pt-4 border-t border-transparent">
+                <a
+                  href="#projects"
+                  className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
+                >
+                  See what I've been building
+                  <ArrowUpRight
+                    className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
               </div>
             </div>
 
-            {/* Right: Technical Narrative */}
-            <div className="md:col-span-8">
-              <div className="goated-card p-6 sm:p-8 space-y-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Brain className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                  Full Stack Development Approach
-                </h3>
+            {/* Right column (Top-Aligned with 'Building things,' heading) */}
+            <div className="lg:col-span-5 flex flex-col justify-between lg:pt-9">
+              <div className="border-t border-slate-200 dark:border-slate-800">
+                {/* Education */}
+                <div className="group flex gap-5 border-b border-slate-200 pb-5 sm:pb-6 pt-3 dark:border-slate-800">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+                    <GraduationCap className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                  </div>
 
-                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-normal">
-                  {personalInfo.bio}
-                </p>
+                  <div>
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Education
+                    </p>
 
-                {/* Highlights Checklist */}
-                <div className="space-y-2.5 pt-4 border-t border-slate-200 dark:border-slate-800">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Core Technical Focus</h4>
-                  {keyHighlights.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      Don Bosco Institute of Technology
+                    </h3>
+
+                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                      B.Tech in Information Technology · Third Year
+                    </p>
+                  </div>
                 </div>
+
+                {/* Current work */}
+                <div className="group flex gap-5 border-b border-slate-200 py-5 sm:py-6 dark:border-slate-800">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+                    <Terminal className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+
+                  <div>
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Currently building
+                    </p>
+
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      NexGo Tech
+                    </h3>
+
+                    <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                      Building websites, applications and software products
+                      for real businesses.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Stack */}
+                <div className="group flex gap-5 border-b border-slate-200 py-5 sm:py-6 dark:border-slate-800">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+                    <Code2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+
+                  <div>
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      I work with
+                    </p>
+
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      Full-stack JavaScript / TypeScript
+                    </h3>
+
+                    <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                      React, Node.js, Express, MongoDB, TypeScript and modern web tools.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="group flex gap-5 border-b border-slate-200 py-5 sm:py-6 dark:border-slate-800">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+                    <MapPin className="h-4 w-4 text-rose-500" />
+                  </div>
+
+                  <div>
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Based in
+                    </p>
+
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      {personalInfo.location}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                      Open to software engineering opportunities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Closing Summary Statement */}
+                <div className="pt-5">
+                  <p className="text-xs leading-6 text-slate-500 dark:text-slate-400 italic">
+                    Third-year IT student building full-stack products, real-world
+                    applications, and software systems while growing as an
+                    engineer through hands-on work.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom statement */}
+          <div className="mt-20 border-y border-slate-200 py-8 dark:border-slate-800">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                Currently focused on becoming a better engineer, one project
+                at a time.
+              </p>
+
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                Always learning
               </div>
             </div>
           </div>

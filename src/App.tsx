@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { ScrollToTop } from './components/ScrollToTop';
 import { DottedBackground } from './components/ui/DottedBackground';
+import { AmbientCursorCloud } from './components/ui/AmbientCursorCloud';
 import { RecruiterPitchModal } from './components/RecruiterPitchModal';
 import { TerminalModal } from './components/TerminalModal';
 import { CommandPalette } from './components/CommandPalette';
@@ -61,6 +62,7 @@ export default function App() {
     <div className="min-h-screen relative font-sans transition-colors duration-200">
       <ScrollProgress />
       <DottedBackground />
+      <AmbientCursorCloud />
       
       <Navbar
         isDark={isDark}

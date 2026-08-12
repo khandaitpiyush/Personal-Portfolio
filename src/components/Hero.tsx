@@ -117,7 +117,7 @@ export function Hero({ onViewProjects }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Right Column: Seamless Blended Portfolio Image (Ultra-subtle Edge Fade Mask) */}
+          {/* Right Column: Seamless Blended Portfolio Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}

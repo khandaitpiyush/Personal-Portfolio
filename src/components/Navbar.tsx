@@ -19,7 +19,7 @@ export function Navbar({ isDark, toggleTheme, onOpenPitch, onOpenTerminal }: Nav
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'projects', 'about', 'experience', 'skills', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -51,10 +51,10 @@ export function Navbar({ isDark, toggleTheme, onOpenPitch, onOpenTerminal }: Nav
   };
 
   const navItems = [
-    { id: 'projects', label: 'Work' },
     { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Stack' },
+    { id: 'projects', label: 'Work' },
+    { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' }
   ];
 

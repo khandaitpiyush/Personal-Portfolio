@@ -15,7 +15,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative px-4 py-24 sm:px-6 lg:px-8"
+      className="relative px-4 pt-8 pb-16 sm:py-20 lg:py-24 sm:px-6 lg:px-8"
     >
       <div ref={ref} className="mx-auto max-w-6xl">
         <motion.div

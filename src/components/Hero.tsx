@@ -21,7 +21,7 @@ export function Hero({ onViewProjects }: HeroProps) {
   const techBadges = ['React', 'Node.js', 'Express', 'MongoDB', 'TypeScript'];
 
   return (
-    <section id="home" className="min-h-[88vh] flex items-center justify-center pt-32 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-0 lg:min-h-[88vh] flex items-center justify-center pt-28 sm:pt-36 pb-6 sm:pb-10 lg:pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           {/* Left Column: Text & Content */}
@@ -52,7 +52,7 @@ export function Hero({ onViewProjects }: HeroProps) {
               Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">{personalInfo.name}</strong>. Third-Year IT Student at <span className="text-slate-900 dark:text-white font-medium">{personalInfo.college}</span>. I build full-stack web applications, SaaS products, and practical software systems.
             </p>
 
-            {/* Tech Pills with Micro Stagger Animation */}
+            {/* Tech Pills */}
             <div className="flex flex-wrap items-center gap-2 pt-1">
               {techBadges.map((tech, i) => (
                 <motion.span
@@ -90,8 +90,16 @@ export function Hero({ onViewProjects }: HeroProps) {
               </motion.button>
             </div>
 
-            {/* Social Links & Location */}
-            <div className="flex items-center gap-4 pt-2 text-slate-500 dark:text-slate-400">
+            {/* Mobile Centered Location Tag */}
+            <div className="flex lg:hidden items-center justify-center pt-1">
+              <span className="inline-flex items-center text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-3.5 py-1.5 rounded-full border border-slate-200/80 dark:border-slate-700/60">
+                <MapPin className="w-3.5 h-3.5 mr-1.5 text-rose-500" />
+                {personalInfo.location}
+              </span>
+            </div>
+
+            {/* Social Links & Location (Desktop Row) */}
+            <div className="hidden lg:flex items-center gap-4 pt-2 text-slate-500 dark:text-slate-400">
               <motion.a
                 href={personalInfo.github}
                 target="_blank"
@@ -136,14 +144,53 @@ export function Hero({ onViewProjects }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Right Column: Seamless Blended Portfolio Image */}
+          {/* Right Column: Seamless Blended Portfolio Image + Mobile Vertical Parallel Social Strip */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
-            className="lg:col-span-6 flex justify-center lg:justify-start items-center lg:-ml-6"
+            className="lg:col-span-6 flex justify-center items-center text-center mx-auto lg:mx-0 lg:justify-start lg:-ml-6 pt-3 lg:pt-0"
           >
-            <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-none flex justify-center lg:justify-start items-center">
+            <div className="relative w-full max-w-[360px] sm:max-w-[450px] lg:max-w-none flex items-center justify-center mx-auto lg:justify-start">
+              {/* Mobile Vertical Social Parallel Strip (Positioned Right Closer to Photo) */}
+              <div className="flex flex-col items-center justify-center gap-3 translate-x-7 sm:translate-x-10 z-10 lg:hidden shrink-0">
+                <motion.a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-md backdrop-blur-xs"
+                  aria-label="GitHub"
+                  title="GitHub Profile"
+                >
+                  <Github className="w-4 h-4" />
+                </motion.a>
+                <motion.a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-md backdrop-blur-xs"
+                  aria-label="LinkedIn"
+                  title="LinkedIn Profile"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </motion.a>
+                <motion.a
+                  href={`mailto:${personalInfo.email}`}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-md backdrop-blur-xs"
+                  aria-label="Email"
+                  title="Send Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </motion.a>
+              </div>
+
+              {/* Portrait Image */}
               <img
                 src={portfolioImage}
                 alt={personalInfo.name}
@@ -151,7 +198,7 @@ export function Hero({ onViewProjects }: HeroProps) {
                   maskImage: 'linear-gradient(to bottom, black 93%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, black 93%, transparent 100%)'
                 }}
-                className="w-full h-auto max-h-[520px] sm:max-h-[640px] lg:max-h-[960px] lg:scale-120 origin-left object-contain drop-shadow-md select-none pointer-events-none transition-transform duration-500 hover:scale-[1.22]"
+                className="w-full h-auto max-h-[420px] sm:max-h-[520px] lg:max-h-[960px] lg:scale-120 origin-center lg:origin-left object-contain drop-shadow-md select-none pointer-events-none transition-transform duration-500 hover:scale-[1.03] lg:hover:scale-[1.22]"
               />
             </div>
           </motion.div>

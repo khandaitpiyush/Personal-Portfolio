@@ -69,6 +69,7 @@ export const projects: Project[] = [
     category: 'Personal Project',
     description: 'A community resource sharing web application that connects users to share, discover, and redistribute reusable goods and items.',
     techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Web APIs'],
+    image: '/project_passiton_mockup.jpg',
     features: [
       'Item listing and search discovery',
       'Resource sharing categorization',
@@ -84,6 +85,7 @@ export const projects: Project[] = [
     category: 'Personal Project',
     description: 'A customer support ticket management CRM for logging support inquiries, managing ticket priorities, and tracking customer query status.',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'State Management'],
+    image: '/project_crm_mockup.jpg',
     features: [
       'Support ticket tracking and logging',
       'Customer inquiry status workflows',

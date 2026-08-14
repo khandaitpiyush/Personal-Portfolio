@@ -54,7 +54,7 @@ export const projects: Project[] = [
     category: 'My Venture',
     description: 'My software and web development venture dedicated to building commercial client web applications, custom digital products, and performant web services.',
     techStack: ['Full-Stack Development', 'Software Architecture', 'Client Delivery', 'Web Applications'],
-    image: '/project_admin_mockup.jpg',
+    image: '/project_nexgo_mockup.png',
     features: [
       'Commercial client web application delivery',
       'Custom digital product development',

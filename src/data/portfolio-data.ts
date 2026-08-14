@@ -23,7 +23,7 @@ export const projects: Project[] = [
     description: 'A comprehensive Gym Management Platform / SaaS for fitness centers to manage member subscriptions, attendance tracking workflows, and operational scheduling.',
     builtThrough: 'NexGo Tech',
     techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'Tailwind CSS'],
-    image: '/project_erp_mockup.jpg',
+    image: '/project_fitcamp_mockup.png',
     features: [
       'Gym member administration & subscription management',
       'Attendance tracking & scheduling workflows',
